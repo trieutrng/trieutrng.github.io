@@ -51,7 +51,7 @@ All the end server in the whole flow communicate by the same protocol to resolve
 <p><img src="dns-message-format.png" alt="DNS packet structure"></p>
 <p>First of all, the the packet begins with a header section, this one describes the entire packet, it contains some data and flags like ID, the type of packet (query or answer) and number of questions or answers based on the type. The receiver will get to understand the header and extract the data of the rest later on.</p>
 <p>Next, we have the question section, this bunch of bytes store the question of the request which is domain name to resolve.</p>
-<p>The answer bytes hold the tail of the question section, it is built for the response no matter the response belongs to the TLD server or Authoritative one.</p>
+<p>The answer bytes holds the tail of the question section, it is built for the response no matter the response belongs to the TLD server or Authoritative one.</p>
 <p>For simplicity, the last 2 sections are Authority and Additional will be skipped for this post.</p>
 <h1 id="dns-headers">DNS headers</h1>
 <p><img src="dns-header.png" alt="DNS packet structure"></p>
@@ -99,7 +99,7 @@ request<br></li>
     ...
 }
 </code></pre>
-<h1 id="dns-questions">DNS questions</h1>
+<h1 id="dns-question">DNS question</h1>
 <p><img src="dns-question.png" alt="DNS packet questions"></p>
 <p>3 fields are described as:</p>
 <ul>
@@ -180,7 +180,10 @@ request<br></li>
 <h1 id="dns-packet-compression">DNS packet compression</h1>
 <p>A DNS response is sometimes required to repeat the same name multiple times. In this case, a DNS server may encode a pointer to an earlier name instead of sending the same name multiple times.</p>
 <p>A pointer is indicated by a 16-bit value with the two most significant bits set. The lower 14 bits indicate the pointer value. This 14-bit value specifies the location of the name as an offset from the beginning of the message.</p>
+<h1 id="the-protocol">The protocol</h1>
+<p>By default, DNS uses UDP as default protocol and and DNS query or response should fit well inside one packet. However, if a DNS reponse indicate that the message is truncated, the TCP comes and shines, in this case, we fallback to query DNS with the same message format as we do with UDP.</p>
 <h1 id="the-end">The end</h1>
+<p><img src="dns-usage-1.png" alt="DNS usage 1"></p>
 <p>The implementation is at <a href="https://github.com/trieutrng/dns-protocol">https://github.com/trieutrng/dns-protocol</a></p>
 
 </main>
