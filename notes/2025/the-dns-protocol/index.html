@@ -1,22 +1,109 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Programming on </title>
-    <link>https://trieutrng.github.io/categories/programming/</link>
-    <description>Recent content in Programming on </description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <managingEditor>trieutrng@gmail.com (Trieu Truong)</managingEditor>
-    <webMaster>trieutrng@gmail.com (Trieu Truong)</webMaster>
-    <lastBuildDate>Sun, 17 Aug 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://trieutrng.github.io/categories/programming/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>The DNS Protocol</title>
-      <link>https://trieutrng.github.io/notes/2025/the-dns-protocol/</link>
-      <pubDate>Sun, 17 Aug 2025 00:00:00 +0000</pubDate><author>trieutrng@gmail.com (Trieu Truong)</author>
-      <guid>https://trieutrng.github.io/notes/2025/the-dns-protocol/</guid>
-      <description>&lt;p&gt;As an engineer in computer industry, everyone should be familiar with the DNS, how a domain is resolved into IP eventually. Yet not everyone understands how the protocol is defined and how the packet is contructed as well. Thus, this post will go through the DNS packet definition and provide an actual implemetation eventually.&lt;/p&gt;&#xA;&lt;h1 id=&#34;recall-the-dns&#34;&gt;Recall the DNS&lt;/h1&gt;&#xA;&lt;p&gt;&lt;img src=&#34;dns-flow.png&#34; alt=&#34;DNS flow&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;DNS is a hierarchical client-server protocol. Every individual domain (e.g., google.com, microsoft.com, etc) is managed by a DNS server which knows where exactly the machine that running the application and eventually return the IP of that machine.&lt;/p&gt;</description>
-      <content:encoded><![CDATA[<p>As an engineer in computer industry, everyone should be familiar with the DNS, how a domain is resolved into IP eventually. Yet not everyone understands how the protocol is defined and how the packet is contructed as well. Thus, this post will go through the DNS packet definition and provide an actual implemetation eventually.</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://trieutrng.github.io/images/favicon.png" />
+<title>The DNS Protocol | </title>
+<meta name="title" content="The DNS Protocol" />
+<meta name="description" content="As an engineer in computer industry, everyone should be familiar with the DNS, how a domain is resolved into IP eventually. Yet not everyone understands how the protocol is defined and how the packet is contructed as well. Thus, this post will go through the DNS packet definition and provide an actual implemetation eventually.
+Recall the DNS
+
+DNS is a hierarchical client-server protocol. Every individual domain (e.g., google.com, microsoft.com, etc) is managed by a DNS server which knows where exactly the machine that running the application and eventually return the IP of that machine." />
+<meta name="author" content="" />
+<meta name="keywords" content="networking,c," />
+
+
+
+
+
+
+  
+  <meta property="og:url" content="https://trieutrng.github.io/notes/2025/the-dns-protocol/">
+  <meta property="og:site_name" content="Bear Cub">
+  <meta property="og:title" content="The DNS Protocol">
+  <meta property="og:description" content="As an engineer in computer industry, everyone should be familiar with the DNS, how a domain is resolved into IP eventually. Yet not everyone understands how the protocol is defined and how the packet is contructed as well. Thus, this post will go through the DNS packet definition and provide an actual implemetation eventually.
+Recall the DNS DNS is a hierarchical client-server protocol. Every individual domain (e.g., google.com, microsoft.com, etc) is managed by a DNS server which knows where exactly the machine that running the application and eventually return the IP of that machine.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="notes">
+    <meta property="article:published_time" content="2025-08-17T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-08-17T00:00:00+00:00">
+    <meta property="article:tag" content="Networking">
+    <meta property="article:tag" content="C">
+    <meta property="og:image" content="https://trieutrng.github.io/images/share.webp">
+        <meta property="fb:admins" content="0000000000">
+
+
+  
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://trieutrng.github.io/images/share.webp">
+  <meta name="twitter:title" content="The DNS Protocol">
+  <meta name="twitter:description" content="As an engineer in computer industry, everyone should be familiar with the DNS, how a domain is resolved into IP eventually. Yet not everyone understands how the protocol is defined and how the packet is contructed as well. Thus, this post will go through the DNS packet definition and provide an actual implemetation eventually.
+Recall the DNS DNS is a hierarchical client-server protocol. Every individual domain (e.g., google.com, microsoft.com, etc) is managed by a DNS server which knows where exactly the machine that running the application and eventually return the IP of that machine.">
+      <meta name="twitter:site" content="@example">
+
+
+  
+  
+  <meta itemprop="name" content="The DNS Protocol">
+  <meta itemprop="description" content="As an engineer in computer industry, everyone should be familiar with the DNS, how a domain is resolved into IP eventually. Yet not everyone understands how the protocol is defined and how the packet is contructed as well. Thus, this post will go through the DNS packet definition and provide an actual implemetation eventually.
+Recall the DNS DNS is a hierarchical client-server protocol. Every individual domain (e.g., google.com, microsoft.com, etc) is managed by a DNS server which knows where exactly the machine that running the application and eventually return the IP of that machine.">
+  <meta itemprop="datePublished" content="2025-08-17T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-08-17T00:00:00+00:00">
+  <meta itemprop="wordCount" content="1156">
+  <meta itemprop="image" content="https://trieutrng.github.io/images/share.webp">
+  <meta itemprop="keywords" content="Networking,C">
+
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  
+  <link href="/original.min.css" rel="stylesheet">
+
+  
+    
+    <link href="/syntax.min.css" rel="stylesheet">
+  
+
+  
+
+  
+</head>
+
+<body>
+  <header><a class="skip-link" href="#main-content">Skip to main content</a>
+
+<a href="/" class="title"><h1></h1></a>
+<nav>
+  <a href="/">Home</a>
+
+  <a href="/notes/">Notes</a>
+
+<a href='https://trieutrng.github.io/index.xml'>RSS</a>
+
+
+
+
+
+
+
+</nav>
+</header>
+  <main id="main-content">
+
+<h1>The DNS Protocol</h1>
+<p class="byline">
+  <time datetime='2025-08-17' pubdate>
+    2025-08-17
+  </time>
+  
+</p>
+
+<content>
+  <p>As an engineer in computer industry, everyone should be familiar with the DNS, how a domain is resolved into IP eventually. Yet not everyone understands how the protocol is defined and how the packet is contructed as well. Thus, this post will go through the DNS packet definition and provide an actual implemetation eventually.</p>
 <h1 id="recall-the-dns">Recall the DNS</h1>
 <p><img src="dns-flow.png" alt="DNS flow"></p>
 <p>DNS is a hierarchical client-server protocol. Every individual domain (e.g., google.com, microsoft.com, etc) is managed by a DNS server which knows where exactly the machine that running the application and eventually return the IP of that machine.</p>
@@ -178,7 +265,31 @@ request<!-- raw HTML omitted --></li>
 <h1 id="conslusion">Conslusion</h1>
 <p><img src="dns-usage-1.png" alt="DNS usage 1"></p>
 <p>The implementation is at <a href="https://github.com/trieutrng/dns-protocol">https://github.com/trieutrng/dns-protocol</a></p>
-]]></content:encoded>
-    </item>
-  </channel>
-</rss>
+
+</content>
+<p>
+  
+    <a class="blog-tags" href="/tags/networking/">#networking</a>
+  
+    <a class="blog-tags" href="/tags/c/">#c</a>
+  
+</p>
+
+
+  <p>
+    <a href='mailto:trieutrng@gmail.com?subject=Reply%20to%20"The%20DNS%20Protocol"'>
+      Reply to this post by email ↪
+    </a>
+  </p>
+
+
+
+  </main>
+  <footer><small>
+   | 
+</small></footer>
+
+    
+</body>
+
+</html>
