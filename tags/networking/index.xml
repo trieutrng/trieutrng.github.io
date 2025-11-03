@@ -12,9 +12,9 @@
     <atom:link href="https://trieutrng.github.io/tags/networking/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The DNS Protocol</title>
-      <link>https://trieutrng.github.io/post/2025/the-dns-protocol/</link>
+      <link>https://trieutrng.github.io/note/2025/the-dns-protocol/</link>
       <pubDate>Sun, 17 Aug 2025 00:00:00 +0000</pubDate><author>trieutrng@gmail.com (Trieu Truong)</author>
-      <guid>https://trieutrng.github.io/post/2025/the-dns-protocol/</guid>
+      <guid>https://trieutrng.github.io/note/2025/the-dns-protocol/</guid>
       <description>&lt;p&gt;As an engineer in computer industry, everyone should be familiar with the DNS, how a domain is resolved into IP eventually. Yet not everyone understands how the protocol is defined and how the packet is contructed as well. Thus, this post will go through the DNS packet definition and provide an actual implemetation eventually.&lt;/p&gt;&#xA;&lt;h1 id=&#34;recall-the-dns&#34;&gt;Recall the DNS&lt;/h1&gt;&#xA;&lt;p&gt;&lt;img src=&#34;dns-flow.png&#34; alt=&#34;DNS flow&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;DNS is a hierarchical client-server protocol. Every individual domain (e.g., google.com, microsoft.com, etc) is managed by a DNS server which knows where exactly the machine that running the application and eventually return the IP of that machine.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>As an engineer in computer industry, everyone should be familiar with the DNS, how a domain is resolved into IP eventually. Yet not everyone understands how the protocol is defined and how the packet is contructed as well. Thus, this post will go through the DNS packet definition and provide an actual implemetation eventually.</p>
 <h1 id="recall-the-dns">Recall the DNS</h1>
