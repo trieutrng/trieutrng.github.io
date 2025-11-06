@@ -106,7 +106,7 @@ Recall the DNS DNS is a hierarchical client-server protocol. Every individual do
 
 <content>
   <p>As an engineer in computer industry, everyone should be familiar with the DNS, how a domain is resolved into IP eventually. Yet not everyone understands how the protocol is defined and how the packet is contructed as well. Thus, this post will go through the DNS packet definition and provide an actual implemetation eventually.</p>
-<h1 id="recall-the-dns">Recall the DNS</h1>
+<h2 id="recall-the-dns">Recall the DNS</h2>
 <p><img src="dns-flow.png" alt="DNS flow"></p>
 <p>DNS is a hierarchical client-server protocol. Every individual domain (e.g., google.com, microsoft.com, etc) is managed by a DNS server which knows where exactly the machine that running the application and eventually return the IP of that machine.</p>
 <p>When we register a domain for an IP, we are always being asked to set up some records such as A, AAAA, CNAME, etc,. So what do those records mean?</p>
@@ -120,13 +120,13 @@ Recall the DNS DNS is a hierarchical client-server protocol. Every individual do
 <p>And so on, you can keep discovering them at <a href="https://www.cloudflare.com/learning/dns/dns-records/">here</a>.
 All the end server in the whole flow communicate by the same protocol to resolve exactly the responsible server.</p>
 <p>So how the bytes are formed?</p>
-<h1 id="dns-packet-structure">DNS packet structure</h1>
+<h2 id="dns-packet-structure">DNS packet structure</h2>
 <p><img src="dns-message-format.png" alt="DNS packet structure"></p>
 <p>First of all, the the packet begins with a header section, this one describes the entire packet, it contains some data and flags like ID, the type of packet (query or answer) and number of questions or answers based on the type. Receiver side will get understood the header and extract the data of the rest later on.</p>
 <p>Next, we have the question section, this bunch of bytes store the question of the request which is domain name to be resolved.</p>
 <p>The answer bytes holds the tail of the question section, it is built for the response no matter the response belongs to the TLD server or Authoritative one.</p>
 <p>For simplicity, the last 2 sections are Authority and Additional will be skipped for this post.</p>
-<h1 id="dns-headers">DNS headers</h1>
+<h2 id="dns-headers">DNS headers</h2>
 <p><img src="dns-header.png" alt="DNS packet structure"></p>
 <p>This section of bytes contains 13 fields:</p>
 <ul>
@@ -175,7 +175,7 @@ request<!-- raw HTML omitted --></li>
 </span></span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="c1"></span>    <span class="o">*</span><span class="n">buf</span><span class="o">++</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">;</span> <span class="o">*</span><span class="n">buf</span><span class="o">++</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">;</span> 
 </span></span><span class="line"><span class="ln">21</span><span class="cl">
 </span></span><span class="line"><span class="ln">22</span><span class="cl">    <span class="p">...</span>
-</span></span><span class="line"><span class="ln">23</span><span class="cl"><span class="p">}</span></span></span></code></pre></div><h1 id="dns-question">DNS question</h1>
+</span></span><span class="line"><span class="ln">23</span><span class="cl"><span class="p">}</span></span></span></code></pre></div><h2 id="dns-question">DNS question</h2>
 <p><img src="dns-question.png" alt="DNS packet questions"></p>
 <p>3 fields are described as:</p>
 <ul>
@@ -215,7 +215,7 @@ request<!-- raw HTML omitted --></li>
 </span></span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="c1"></span>    <span class="o">*</span><span class="n">buf</span><span class="o">++</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">;</span> <span class="o">*</span><span class="n">buf</span><span class="o">++</span> <span class="o">=</span> <span class="mh">0x01</span><span class="p">;</span>           <span class="c1">// QCLASS = 1, internet
 </span></span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="c1"></span>
 </span></span><span class="line"><span class="ln">21</span><span class="cl">    <span class="p">...</span>
-</span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="p">}</span></span></span></code></pre></div><h1 id="dns-answer">DNS answer</h1>
+</span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="p">}</span></span></span></code></pre></div><h2 id="dns-answer">DNS answer</h2>
 <p><img src="dns-answer.png" alt="DNS packet answers"></p>
 <p>The 3 fields NAME, TYPE, CLASS have the same format with the questions sections. There are 3 more new fields:</p>
 <ul>
@@ -259,12 +259,12 @@ request<!-- raw HTML omitted --></li>
 </span></span><span class="line"><span class="ln">29</span><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="ln">30</span><span class="cl">
 </span></span><span class="line"><span class="ln">31</span><span class="cl">    <span class="p">...</span>
-</span></span><span class="line"><span class="ln">32</span><span class="cl"><span class="p">}</span></span></span></code></pre></div><h1 id="dns-packet-compression">DNS packet compression</h1>
+</span></span><span class="line"><span class="ln">32</span><span class="cl"><span class="p">}</span></span></span></code></pre></div><h2 id="dns-packet-compression">DNS packet compression</h2>
 <p>A DNS response is sometimes required to repeat the same name multiple times. In this case, a DNS server may encode a pointer to an earlier name instead of sending the same name multiple times.</p>
 <p>A pointer is indicated by a 16-bit value with the two most significant bits set. The lower 14 bits indicate the pointer value. This 14-bit value specifies the location of the name as an offset from the beginning of the message.</p>
-<h1 id="transport-protocol">Transport protocol</h1>
+<h2 id="transport-protocol">Transport protocol</h2>
 <p>By default, DNS uses UDP as default protocol and and DNS query or response should fit well inside one packet. However, if a DNS reponse indicates that the message is truncated, then TCP comes and shines, in this case, we fallback to use TCP to query DNS with the same message format as we do with UDP.</p>
-<h1 id="conslusion">Conslusion</h1>
+<h2 id="conslusion">Conslusion</h2>
 <p><img src="dns-usage-1.png" alt="DNS usage 1"></p>
 <p>The implementation is at <a href="https://github.com/trieutrng/dns-protocol">https://github.com/trieutrng/dns-protocol</a></p>
 
