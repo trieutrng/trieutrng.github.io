@@ -30,8 +30,14 @@
 <p>Client and server also keep track of how many messages have been encrypted and decryped so far. This value is used in the encrypt/decrypt process. As far as I understand, this is for preventing producing the same encrypted value if one of the ends send the same message again.</p>
 <p>There is a definition about the session ticket, I didn&rsquo;t deep dive into this concept. Generally, after the client and server get done on handshake, the server would send the session tickets to client, client can use this data to make another tls session without going through handshake process again. The network overhead would be well reduced.</p>
 <h1 id="the-end">The end</h1>
-<p>Beside this notes, I have an implementation to prove what I understand is correct. It is only for educational purpose since I find that the <strong>RFC#8446</strong> is really hard to completely implement.</p>
-<p><a href="https://github.com/trieutrng/toy-tls">https://github.com/trieutrng/toy-tls</a></p>
+<p>Beside this notes, I have a mini implementation to prove what I understand is correct. It is only for educational purpose since I find that the <strong>RFC#8446</strong> is really hard to completely implement.</p>
+<p>Link to implementation: <a href="https://github.com/trieutrng/toy-tls">https://github.com/trieutrng/toy-tls</a></p>
+<h1 id="references">References</h1>
+<ul>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc8446">RFC 8446</a></li>
+<li><a href="https://tls13.xargs.org/">The Illustrated TLS 1.3 Connection</a></li>
+<li><a href="https://www.manning.com/books/real-world-cryptography">Real-World Cryptography</a></li>
+</ul>
 ]]></content:encoded>
     </item>
   </channel>
