@@ -12,9 +12,9 @@
     <atom:link href="https://trieutrng.github.io/tags/go/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A little about TLS</title>
-      <link>https://trieutrng.github.io/notes/2025/a-little-about-tls/</link>
+      <link>https://trieutrng.github.io/notes/2025/11/06/a-little-about-tls/</link>
       <pubDate>Thu, 06 Nov 2025 00:00:00 +0000</pubDate><author>trieutrng@gmail.com (Trieu Truong)</author>
-      <guid>https://trieutrng.github.io/notes/2025/a-little-about-tls/</guid>
+      <guid>https://trieutrng.github.io/notes/2025/11/06/a-little-about-tls/</guid>
       <description>&lt;p&gt;TLS (Transport Layer Security) is the additional layer laid immediately above the socket and below the application layer in TCP/UDP protocol. It&amp;rsquo;s laid there to encrypt and decrypt messages passed through to make sure no one in the mdidle could see the actual message.&lt;/p&gt;&#xA;&lt;p&gt;We know that if server and client want to hide and read the messages, they should have the same key to encrypt and decrypt (symmetric encryption). But how both ends can securely share the key through insecure network? Let&amp;rsquo;s look at certain steps both ends should go through to make it happended.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>TLS (Transport Layer Security) is the additional layer laid immediately above the socket and below the application layer in TCP/UDP protocol. It&rsquo;s laid there to encrypt and decrypt messages passed through to make sure no one in the mdidle could see the actual message.</p>
 <p>We know that if server and client want to hide and read the messages, they should have the same key to encrypt and decrypt (symmetric encryption). But how both ends can securely share the key through insecure network? Let&rsquo;s look at certain steps both ends should go through to make it happended.</p>
